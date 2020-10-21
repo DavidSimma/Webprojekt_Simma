@@ -6,17 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Webprojekt_Simma_Fitnessstudio.Controllers
 {
-    public class HomeController : Controller
+    public class ServiceController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Map()
         {
             return View();
         }
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
-        public IActionResult Datenschutz()
+        public IActionResult Prices()
         {
             return View();
         }

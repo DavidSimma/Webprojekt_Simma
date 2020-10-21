@@ -1,1 +1,93 @@
-﻿
+﻿#background{
+    background-color:black;
+    min-height: 600px;
+}
+#container {
+    background-color:white;
+    width: 80%;
+    min-width: 800px;
+    margin: 0px auto;
+    min-height:600px;
+}
+header {
+    min-height: 80px;
+    border-bottom: 1px solid black;
+    color: darkorange;
+    text-align: center;
+    font-size: 35px;
+    background-color: black;
+    font-weight: bold;
+}
+main {
+    
+}
+nav {
+    width: 15%;
+    min-width: 150px;
+    float: left;
+    min-height: 600px;
+    background-color:orangered;
+}
+nav ul {
+    list-style-type: none;
+    padding: 20px 0px 0px 20px;
+    color: black;
+    font-weight: bold;
+    
+}
+nav li{
+    margin:10px;
+}
+content {
+    width: 65%;
+    min-width: 450px;
+    float: left;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 20px 10px 10px 10px;
+    min-height:600px;
+}
+aside {
+    width: 20%;
+    min-width: 200px;
+    float: right;
+    min-height: 500px;
+    background-color: orangered;
+    height:600px;
+    padding:10px;
+}
+aside p {
+    color: white;
+    font-weight: bold;
+    font-size:20px;
+    text-align:center;
+}
+footer {
+
+    min-height: 42px;
+    clear: both;
+    border-top: 1px solid black;
+}
+footer a {
+    width: auto;
+    float: right;
+    text-align: right;
+    padding: 5px;
+}
+nav a:hover{
+   text-decoration: none;
+   font-weight:bold;
+   color:white;
+   padding-top: 12px;
+   padding-bottom: 10px;
+   padding-left: 25px;
+   padding-right: 45px;
+   background-color:darkred;
+}
+footer a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    padding: 8px;
+    background-color: darkred;
+}
