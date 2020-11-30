@@ -1,60 +1,66 @@
-﻿#background{
-    background-color:black;
-    min-height: 600px;
-}
-#container {
-    background-color:white;
+﻿#container {
+    
     width: 80%;
     min-width: 800px;
     margin: 0px auto;
-    min-height:600px;
+}
+
+body {
+    background-image: url("../pictures/Background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    
 }
 header {
+    background-color: #272727;
+    opacity: 0.9;
     min-height: 80px;
-    border-bottom: 1px solid black;
     color: darkorange;
     text-align: center;
     font-size: 35px;
-    background-color: black;
     font-weight: bold;
 }
 main {
-    
 }
 nav {
+    height: 1500px;
     width: 15%;
     min-width: 150px;
     float: left;
-    min-height: 600px;
-    background-color:orangered;
+    background-color: #ff652f;
+    opacity: 0.9;
 }
 nav ul {
     list-style-type: none;
     padding: 20px 0px 0px 20px;
-    color: black;
-    font-weight: bold;
-    
 }
 nav li{
     margin:10px;
 }
 content {
+    background-color: #272727;
+    height: 1500px;
     width: 65%;
     min-width: 450px;
     float: left;
     border-left: 1px solid black;
     border-right: 1px solid black;
     padding: 20px 10px 10px 10px;
-    min-height:600px;
+    color: #ff652f;
+}
+.navi {
+    width: 60%;
+    height: 25%;
 }
 aside {
+    height: 1500px;
     width: 20%;
     min-width: 200px;
     float: right;
-    min-height: 500px;
-    background-color: orangered;
-    height:600px;
-    padding:10px;
+    background-color: #ff652f;
+    opacity: 0.9;
+    padding: 10px;
 }
 aside p {
     color: white;
@@ -63,26 +69,24 @@ aside p {
     text-align:center;
 }
 footer {
-
+    background-color: #272727;
+    opacity: 0.9;
     min-height: 42px;
     clear: both;
-    border-top: 1px solid black;
 }
 footer a {
     width: auto;
     float: right;
     text-align: right;
     padding: 5px;
+
 }
 nav a:hover{
-   text-decoration: none;
-   font-weight:bold;
-   color:white;
-   padding-top: 12px;
-   padding-bottom: 10px;
+   padding-top: 50px;
+   padding-bottom: 50px;
    padding-left: 25px;
    padding-right: 45px;
-   background-color:darkred;
+   background-color:orangered;
 }
 footer a:hover {
     text-decoration: none;
@@ -90,4 +94,14 @@ footer a:hover {
     color: white;
     padding: 8px;
     background-color: darkred;
+}
+.abos{
+    width:150px;
+    height:276x;
+    margin:30px;
+}
+.abos:hover{
+    height:306px;
+    width:180px;
+    margin:0px;
 }
