@@ -11,32 +11,10 @@ namespace Webprojekt_Simma_Fitnessstudio.Models
     }
     public class User
     {
-        private string _password, _username;
-        public string UserName {
-            get
-            {
-                return this._username;
-            }
-            set
-            {
-                if (value.Length >= 4)
-                {
-                    this._username = value;
-                }
-            }
+        public string UserName {get; set;
         }
         public string Password {
-            get
-            {
-                return this._password;
-            }
-            set
-            {
-                if(value.Length >= 4)
-                {
-                    this._password = value;
-                }
-            }
+            get; set;
         }
         public string Firstname { get; set; }
         public string Lastname { get; set; }

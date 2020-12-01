@@ -13,18 +13,20 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Registrieren()
         {
-            return View();
+            return View(new User());
         }
 
-        public IActionResult createNewArticle(User newUser)
+        [HttpPost]
+        public IActionResult Registrieren(User newUser)
         {
             if (newUser == null)
             {
                 return RedirectToAction("Registration");
             }
-            ValidateArticleData(newUser);
+            ValidateUserData(newUser);
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index", "User");
@@ -32,7 +34,7 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             return View(newUser);
         }
 
-        private void ValidateArticleData(User u)
+        private void ValidateUserData(User u)
         {
             if (u == null)
             {
@@ -40,27 +42,27 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             }
             if (u.UserName == null || u.UserName.Length < 4)
             {
-                ModelState.AddModelError(nameof(u.UserName), "Der Benutzername muss mind. 4 Zeichen lang sein!");
+                ModelState.AddModelError(nameof(Models.User.UserName), "Der Benutzername muss mind. 4 Zeichen lang sein!");
             }
             if (u.Password == null || u.Password.Length < 4)
             {
-                ModelState.AddModelError(nameof(u.Password), "Das Passwort muss mind. 4 Zeichen lang sein!");
+                ModelState.AddModelError(nameof(Models.User.Password), "Das Passwort muss mind. 4 Zeichen lang sein!");
             }
             if (u.Firstname == null)
             {
-                ModelState.AddModelError(nameof(u.Firstname), "Bitte geben Sie einen Vornamen an!");
+                ModelState.AddModelError(nameof(Models.User.Firstname), "Bitte geben Sie einen Vornamen an!");
             }
             if (u.Lastname == null)
             {
-                ModelState.AddModelError(nameof(u.Lastname), "Bitte geben Sie einen Nachnamen an!");
+                ModelState.AddModelError(nameof(Models.User.Lastname), "Bitte geben Sie einen Nachnamen an!");
             }
             if(u.Age < new DateTime(1900, 1, 1))
             {
-                ModelState.AddModelError(nameof(u.Age), "Bitte geben Sie ein vernünftiges Alter an!");
+                ModelState.AddModelError(nameof(Models.User.Age), "Bitte geben Sie ein vernünftiges Alter an!");
             }
             if (u.Age < new DateTime(DateTime.Now.Year-18, DateTime.Now.Month, DateTime.Now.Day))
             {
-                ModelState.AddModelError(nameof(u.Age), "Sie sind zu jung!");
+                ModelState.AddModelError(nameof(Models.User.Age), "Sie sind zu jung!");
             }
 
         }

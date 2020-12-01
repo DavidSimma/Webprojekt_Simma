@@ -6,7 +6,7 @@
 
 <h1>Registrieren</h1>
 
-<form asp-controller="user" asp-action="index" method="post">
+<form asp-controller="user" asp-action="registrieren" method="post">
 
     <label asp-for="UserName">Benutzername *</label>
     <input asp-for="UserName" /><br />
@@ -25,7 +25,7 @@
     <span asp-validation-for="Lastname" class="text-danger" style="font-size:85%"></span><br />
 
     <label asp-for="Age">Alter *</label>
-    <input type="date" asp-for="Age" /><br />
+    <input type="date" asp-for="Age" value=""/><br />
     <span asp-validation-for="Age" class="text-danger" style="font-size:85%"></span><br />
 
 
