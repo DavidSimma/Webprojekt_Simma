@@ -1,0 +1,22 @@
+﻿@model Webprojekt_Simma_Fitnessstudio.Models.User
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form asp-controller="user" asp-action="login" method="post">
+
+    <label asp-for="UserName">Username</label>
+    <input asp-for="UserName" />
+    <span asp-validation-for="UserName" class="text-danger" style="font-size:85%"></span>
+    <br />
+
+    <label asp-for="Password">Passwort </label>
+    <input asp-for="Password" type="password" />
+    <span asp-validation-for="Password" class="text-danger" style="font-size:85%"></span>
+    <br />
+
+    <input type="submit" value="Anmelden" />
+
+</form>

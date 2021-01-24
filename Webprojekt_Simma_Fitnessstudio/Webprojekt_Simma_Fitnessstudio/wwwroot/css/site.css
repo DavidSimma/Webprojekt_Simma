@@ -41,7 +41,7 @@ nav li{
 content {
     background-color: #272727;
     height: 1500px;
-    width: 65%;
+    width: 85%;
     min-width: 450px;
     float: left;
     border-left: 1px solid black;
@@ -52,15 +52,6 @@ content {
 .navi {
     width: 60%;
     height: 25%;
-}
-aside {
-    height: 1500px;
-    width: 20%;
-    min-width: 200px;
-    float: right;
-    background-color: #ff652f;
-    opacity: 0.9;
-    padding: 10px;
 }
 aside p {
     color: white;
@@ -104,4 +95,11 @@ footer a:hover {
     height:306px;
     width:180px;
     margin:0px;
+}
+.displayer{
+    color:orangered;
+    font-size:larger;
+}
+img{
+    width:80%;
 }

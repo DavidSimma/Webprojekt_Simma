@@ -1,7 +1,22 @@
-﻿
+﻿@using Webprojekt_Simma_Fitnessstudio.Models
+@model User
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@if (Model == null)
+{
+    <p>Sie sind nicht angemeldet!</p>
+    <br />
+    <a asp-controller="user" asp-action="login">Login</a>
+    <a asp-controller="user" asp-action="registrieren">Registrieren</a>
 
+}
+else
+{
+    <p class="displayer">Benutzername: </p><p>@Model.UserName</p>
+    <p class="displayer">Vorname: </p><p>@Model.Firstname</p>
+    <p class="displayer">Nachname: </p><p>@Model.Lastname</p>
+    <p class="displayer">Geburtsdatum: </p><p>@Model.Age</p>
+    <p class="displayer">Geschlecht: </p><p>@Model.Gender</p>
+}
