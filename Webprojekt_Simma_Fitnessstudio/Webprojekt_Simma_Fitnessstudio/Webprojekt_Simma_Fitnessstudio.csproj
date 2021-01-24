@@ -6,7 +6,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+<<<<<<< HEAD
     <PackageReference Include="MySql.Data" Version="8.0.23" />
+=======
+<<<<<<< HEAD
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+=======
+>>>>>>> 88a3b951c1d75935203082a11b2336ff016bb781
+>>>>>>> 22f14cee6b9d054c3f2e200ec30a55ef71ad5bd9
   </ItemGroup>
 
 </Project>
