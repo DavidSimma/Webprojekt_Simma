@@ -1,0 +1,41 @@
+﻿@model Webprojekt_Simma_Fitnessstudio.Models.User
+
+@{
+    ViewData["Title"] = "Registrieren";
+}
+
+<h1>Registrieren</h1>
+
+<form asp-controller="user" asp-action="registrieren" method="post">
+
+    <label asp-for="UserName">Benutzername *</label>
+    <input asp-for="UserName" /> <br />
+    <span asp-validation-for="UserName" class="text-danger" style="font-size:85%"></span><br />
+
+    <label asp-for="Password">Passwort *</label>
+    <input asp-for="Password" type="password" /><br />
+    <span asp-validation-for="Password" class="text-danger" style="font-size:85%"></span><br />
+
+    <label asp-for="Firstname">Vorname *</label>
+    <input asp-for="Firstname" /><br />
+    <span asp-validation-for="Firstname" class="text-danger" style="font-size:85%"></span><br />
+
+    <label asp-for="Lastname">Nachname *</label>
+    <input asp-for="Lastname" /><br />
+    <span asp-validation-for="Lastname" class="text-danger" style="font-size:85%"></span><br />
+
+    <label asp-for="Age">Alter *</label>
+    <input type="date" asp-for="Age" value=""/><br />
+    <span asp-validation-for="Age" class="text-danger" style="font-size:85%"></span><br />
+
+
+    <label asp-for="Gender">Geschlecht *</label>
+    <select asp-for="Gender">
+        <option value="male">Mann</option>
+        <option value="female">Frau</option>
+    </select><br />
+
+    <input type="submit" value="Registrieren" />
+    <input type="reset" value="Daten zurücksetzen" />
+
+</form>

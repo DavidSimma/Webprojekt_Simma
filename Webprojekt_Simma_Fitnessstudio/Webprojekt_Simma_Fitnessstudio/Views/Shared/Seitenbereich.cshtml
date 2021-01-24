@@ -1,8 +1,14 @@
-﻿<form action="/action_page.php">
-    <p>Login</p>
-    <label for="uname">Username:</label>
-    <input type="text" id="uname" name="uname"><br><br>
-    <label for="pw">Password:</label>
-    <input type="password" id="pw" name="pw"><br><br>
-    <input type="button" value="Submit"><input type="button" value="Register">
-</form>
+﻿@model Webprojekt_Simma_Fitnessstudio.Models.User
+    <form asp-controller="user" asp-action="index" method="post">
+        <p>Login</p>
+
+        <label asp-for="UserName">Username</label>
+        <input asp-for="UserName" /><br />
+
+        <label asp-for="Password">Passwort </label>
+        <input asp-for="Password" type="password" /><br />
+
+        <input type="submit" value="Anmelden" />
+        <button asp-controller="user" asp-action="registrieren" formmethod="get">Registrieren</button>
+
+    </form>

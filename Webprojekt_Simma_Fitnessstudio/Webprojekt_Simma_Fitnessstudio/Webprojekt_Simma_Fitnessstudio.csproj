@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+<<<<<<< HEAD
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
+=======
+>>>>>>> 88a3b951c1d75935203082a11b2336ff016bb781
   </ItemGroup>
 
 </Project>
