@@ -29,7 +29,7 @@ namespace Webprojekt_Simma_Fitnessstudio.Models
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Age = age;
-            this.Gender = Gender;
+            this.Gender = gender;
         }
     }
 }
