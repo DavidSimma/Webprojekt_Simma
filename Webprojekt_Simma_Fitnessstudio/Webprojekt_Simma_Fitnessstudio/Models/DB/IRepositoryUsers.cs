@@ -15,5 +15,6 @@ namespace Webprojekt_Simma_Fitnessstudio.Models.DB
         bool Insert(User user);
         bool Delete(string username);
         bool Update(string username, User newUser);
+        bool Login(string username, string password);
     }
 }

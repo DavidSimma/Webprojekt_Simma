@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Webprojekt_Simma_Fitnessstudio.Models;
 using Webprojekt_Simma_Fitnessstudio.Models.DB;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Webprojekt_Simma_Fitnessstudio.Controllers
 {
@@ -78,19 +80,18 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             {
                 return RedirectToAction("Login");
             }
-            ValidateUserData(user);
+            ValidateLoginData(user);
             if (ModelState.IsValid)
             {
                 try
                 {
                     rep.Open();
-                    if (rep.getUserByUsername(user.UserName) != null) 
+                    if (rep.Login(user.UserName, user.Password)) 
                     {
-                        if(rep.getUserByUsername(user.UserName).Password == user.Password)
-                        {
-                            return RedirectToAction("Index");
-                        }
-                        
+                        HttpContext.Session.SetString("username", user.UserName);
+                        User u = rep.getUserByUsername(user.UserName);
+                        HttpContext.Session.SetObjectAsJson("username", u);
+                        return RedirectToAction("Index");
                     }
                     return RedirectToAction("Login");
 
@@ -107,7 +108,36 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             return View(user);
         }
 
-        private void ValidateUserData(User u)
+        public IActionResult Delete(string username)
+        {
+            try
+            {
+                rep.Open();
+                rep.Delete(username);
+                HttpContext.Session.Clear();
+                return RedirectToAction("Index");
+
+            }
+            catch (DbException)
+            {
+                return View("Message", new Message("Datenbank-Fehler", "Der User konnte nicht erkannt werden", "Probieren sie es bitte später erneut"));
+            }
+            finally
+            {
+                rep.Close();
+            }
+
+            return View();
+        }
+
+        public IActionResult Abmelden()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
+        }
+
+
+            private void ValidateUserData(User u)
         {
             if (u == null)
             {
@@ -139,5 +169,22 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             }
 
         }
+        private void ValidateLoginData(User u)
+        {
+
+            if (u == null)
+            {
+                return;
+            }
+            if (u.UserName == null || u.UserName.Length < 4)
+            {
+                ModelState.AddModelError(nameof(Models.User.UserName), "Der Benutzername muss mind. 4 Zeichen lang sein!");
+            }
+            if (u.Password == null || u.Password.Length < 4)
+            {
+                ModelState.AddModelError(nameof(Models.User.Password), "Das Passwort muss mind. 4 Zeichen lang sein!");
+            }
+        }
+            
     }
 }

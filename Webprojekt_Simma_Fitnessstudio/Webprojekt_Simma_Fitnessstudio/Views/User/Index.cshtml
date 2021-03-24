@@ -1,10 +1,12 @@
 ﻿@using Webprojekt_Simma_Fitnessstudio.Models
+@using Microsoft.AspNetCore.Http;
+@using Webprojekt_Simma_Fitnessstudio.Models.DB
 @model User
 @{
     ViewData["Title"] = "Index";
 }
 
-@if (Model == null)
+@if (@Context.Session.GetString("username") == null)
 {
     <p>Sie sind nicht angemeldet!</p>
     <br />
@@ -14,9 +16,67 @@
 }
 else
 {
-    <p class="displayer">Benutzername: </p><p>@Model.UserName</p>
-    <p class="displayer">Vorname: </p><p>@Model.Firstname</p>
-    <p class="displayer">Nachname: </p><p>@Model.Lastname</p>
-    <p class="displayer">Geburtsdatum: </p><p>@Model.Age</p>
-    <p class="displayer">Geschlecht: </p><p>@Model.Gender</p>
+    <p>@Context.Session.GetString("username")</p>
+
+
+
+        <table>
+            <thead>
+                <tr>
+                    <td><center>Benutzer</center></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{User user = Context.Session.GetObjectFromJson<User>("username");}
+                <tr>
+                    <th>
+                        <p class="displayer">Benutzername: </p>
+                    </th>
+                    <td>
+                        <p>@user.UserName</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p class="displayer">Vorname: </p>
+                    </th>
+                    <td>
+                        <p>@user.Firstname</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p class="displayer">Nachname: </p>
+                    </th>
+                    <td>
+                        <p>@user.Lastname</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p class="displayer">Geburtsdatum: </p>
+                    </th>
+                    <td>
+                        <p>@user.Age</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <p class="displayer">Geschlecht: </p>
+                    </th>
+                    <td>
+                        <p>@user.Gender</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="/User/Delete/@user.UserName method="post">
+            <input type="hidden" name="username" value="@user.UserName" />
+            <input type="submit" value="Löschen" />
+        </form>
+
+        <a asp-controller="user" asp-action="abmelden">Abmelden</a>
+
+
 }
