@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Webprojekt_Simma_Fitnessstudio.Models;
 using Webprojekt_Simma_Fitnessstudio.Models.DB;
 using Microsoft.AspNetCore.Http;
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Webprojekt_Simma_Fitnessstudio.Controllers
 {
@@ -31,6 +32,39 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
                 rep.Close();
             }
         }
+
+        public JsonResult GetUser()
+        {
+            try
+            {
+                //rep = new RepositoryUserDB();
+                //rep.Open();
+                //HttpContext.Session.GetObjectFromJson<User>("username");
+
+                Console.WriteLine("user:    " + HttpContext.Session.GetString("username"));
+                //Console.WriteLine("user:    " + rep.getUserByUsername("admin"));
+                if(HttpContext.Session.GetString("username") != null)
+                {
+                    return Json(HttpContext.Session.GetString("username"));
+                }
+                else
+                {
+                    return Json("nicht angemeldet");
+                }
+
+            }
+            catch (Exception)
+            {
+                return Json("Error");
+            }
+            /*finally
+            {
+                rep.Close();
+            }
+            */
+        }
+
+
         [HttpGet]
         public IActionResult Registrieren()
         {
@@ -136,8 +170,31 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Update()
+        {
+            try
+            {
+                rep.Open();
+                var username = (JObject)JsonConvert.DeserializeObject(HttpContext.Session.GetString("username"));
+                User user = rep.getUserByUsername(username["UserName"].Value<String>());
+                
+                rep.Update(user.UserName, user);
+                HttpContext.Session.Clear();
+                return RedirectToAction("Index");
 
-            private void ValidateUserData(User u)
+            }
+            catch (DbException)
+            {
+                return View("Message", new Message("Datenbank-Fehler", "Der User konnte nicht geändert werden", "Probieren sie es bitte später erneut"));
+            }
+            finally
+            {
+                rep.Close();
+            }
+        }
+
+
+        private void ValidateUserData(User u)
         {
             if (u == null)
             {
