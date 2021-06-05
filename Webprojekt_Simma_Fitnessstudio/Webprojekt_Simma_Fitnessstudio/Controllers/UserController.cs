@@ -164,6 +164,11 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             return View();
         }
 
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
         public IActionResult Abmelden()
         {
             HttpContext.Session.Clear();

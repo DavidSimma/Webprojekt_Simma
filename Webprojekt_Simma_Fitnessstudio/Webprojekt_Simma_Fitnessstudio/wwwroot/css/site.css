@@ -97,3 +97,6 @@ footer a:hover {
 img{
     width:80%;
 }
+#user {
+    display:none;
+}

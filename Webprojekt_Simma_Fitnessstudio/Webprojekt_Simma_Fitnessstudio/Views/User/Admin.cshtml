@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h1>Admin</h1>
+@{ if (@Context.Session.GetString("username") == null)
+    {
+        <p>Sie müssen sich zuerst einloggen</p>
+    }
+    else
+    {
+        <p id="user">@Context.Session.GetString("username")</p>
+         <button id="checkBtn">Berechtigungen prüfen</button>
+    }
+}
+
+<div id="ausgabe">
+    <p>noch nix</p>
+</div>
+
+@section Scripts{
+    <script src="~/js/adminPage.js"></script>
+}
+
