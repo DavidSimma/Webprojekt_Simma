@@ -37,15 +37,15 @@ function displayUserTable(user) {
                 </tr>
                 <tr>
                     <td class="displayer">Vorname: </td>
-                    <td><input value="${value.Firstname}" /></td>
+                    <td>${value.Firstname}</td>
                 </tr>
                 <tr>
                     <td class="displayer">Nachname: </td>
-                    <td><input value="${value.Lastname}" /></td>
+                    <td>${value.Lastname}</td>
                 </tr>
                 <tr>
                     <td class="displayer">Geburtsdatum: </td>
-                    <td><input value="${displayDate(value.Age)[0]}" type="date"/></td>
+                    <td>${displayDate(value.Age)[0]}</td>
                     
                 </tr>
                 <tr>
@@ -56,23 +56,15 @@ function displayUserTable(user) {
     </table>`;
     return s;
 }
-
-function displayGender(g) {
-    if (g == 0) {
-        return `<select>
-            <option value="0" selected="selected">männlich</option>
-            <option value="1">weiblich</option>
-        </select>`;
-    }
-    else if (g==1){
-        return `<select>
-            <option value="0" >männlich</option>
-            <option value="1" selected="selected">weiblich</option>
-        </select>`;
-    }
-}
-
 function displayDate(date) {
     let s = date.split("T");
     return s;
+}
+function displayGender(g) {
+    if (g == 0) {
+        return "männlich";
+    }
+    else if (g == 1) {
+        return "weiblich";
+    }
 }

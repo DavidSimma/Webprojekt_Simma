@@ -170,30 +170,6 @@ namespace Webprojekt_Simma_Fitnessstudio.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Update()
-        {
-            try
-            {
-                rep.Open();
-                var username = (JObject)JsonConvert.DeserializeObject(HttpContext.Session.GetString("username"));
-                User user = rep.getUserByUsername(username["UserName"].Value<String>());
-                
-                rep.Update(user.UserName, user);
-                HttpContext.Session.Clear();
-                return RedirectToAction("Index");
-
-            }
-            catch (DbException)
-            {
-                return View("Message", new Message("Datenbank-Fehler", "Der User konnte nicht geändert werden", "Probieren sie es bitte später erneut"));
-            }
-            finally
-            {
-                rep.Close();
-            }
-        }
-
-
         private void ValidateUserData(User u)
         {
             if (u == null)
